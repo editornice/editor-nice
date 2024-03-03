@@ -10,6 +10,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -36,7 +37,8 @@ public class Board {
     @Column(nullable = false)
     private String views;
     @CreatedDate
-    private Date createdDate;
+    @Column(updatable = false)
+    private LocalDateTime createdDate;
     @LastModifiedDate
-    private Date updatedDate;
+    private LocalDateTime updatedDate;
 }
