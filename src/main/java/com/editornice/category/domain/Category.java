@@ -1,4 +1,4 @@
-package com.editornice.category;
+package com.editornice.category.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -8,21 +8,23 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Category {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     @Column(nullable = false)
     private String name;
 
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdDate;
+
     @LastModifiedDate
     private LocalDateTime updatedDate;
 }

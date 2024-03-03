@@ -1,7 +1,6 @@
-package com.editornice.board;
+package com.editornice.comment.domain;
 
-import com.editornice.category.Category;
-import com.editornice.member.Member;
+import com.editornice.board.domain.Board;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,36 +8,31 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Board {
+public class Comment {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
+
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "board_id")
+    private Board board;
 
-    private Member Member;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "category_id")
-
-    private Category category;
-
-    @Column(nullable = false)
-    private String title;
 
     @Column(nullable = false)
     private String content;
-    @Column(nullable = false)
-    private String views;
+
+//    private long reparent;//부모댓글
+
     @CreatedDate
     @Column(updatable = false)
     private LocalDateTime createdDate;
+
     @LastModifiedDate
     private LocalDateTime updatedDate;
 }

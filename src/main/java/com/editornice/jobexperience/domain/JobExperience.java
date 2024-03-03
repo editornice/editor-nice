@@ -1,4 +1,4 @@
-package com.editornice.portfoliovideo;
+package com.editornice.jobexperience.domain;
 
 import com.editornice.resume.domain.Resume;
 import lombok.AccessLevel;
@@ -6,11 +6,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PortfolioVideo {
+public class JobExperience {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,8 +22,19 @@ public class PortfolioVideo {
     private Resume resume;
 
     @Column(nullable = false)
-    private String url;
+    private String companyName;
 
     @Column(nullable = false)
-    private int views;
+    private LocalDate startDate;
+
+    @Column(nullable = false)
+    private LocalDate endDate;
+
+    @Column(nullable = false)
+    private String task;
+
+    @Column(nullable = false)
+    private String content;
+
+//    private String order;
 }

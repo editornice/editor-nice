@@ -1,6 +1,7 @@
-package com.editornice.portfoliovideo;
+package com.editornice.resume.domain;
 
-import com.editornice.resume.domain.Resume;
+import com.editornice.genre.domain.Genre;
+import com.editornice.skill.domain.Skill;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -10,7 +11,7 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class PortfolioVideo {
+public class ResumeSkill {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,9 +21,7 @@ public class PortfolioVideo {
     @JoinColumn(name = "resume_id")
     private Resume resume;
 
-    @Column(nullable = false)
-    private String url;
-
-    @Column(nullable = false)
-    private int views;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "skill_id")
+    private Skill skill;
 }
