@@ -1,11 +1,11 @@
 package com.editornice.comment;
 
+import com.editornice.board.Board;
 import lombok.Getter;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.Date;
 
@@ -15,11 +15,15 @@ public class Comment {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long boardId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "board_id")
+    private Board board;
     private long reparent;//부모댓글
-    @NotBlank(message="댓글을 작성해주세요.")
+
     private String content;
+    @CreatedDate
     private Date createdDate;
+    @LastModifiedDate
     private Date updatedDate;
 
 }
