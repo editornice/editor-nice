@@ -3,7 +3,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://localhost:3306/editor_nice
     username: root
-    password: "!junki123"
+    password: 123456
 
   jpa:
     properties:
