@@ -1,27 +1,44 @@
 package com.editornice.board;
 
+import com.editornice.category.Category;
+import com.editornice.member.Member;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedDate;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
 @Getter
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Board {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
-    private long userId;
-    private long categoryId;
-    @NotBlank(message="제목은 필수 항목입니다.")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "member_id")
+
+    private Member Member;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "category_id")
+
+    private Category category;
+
+    @Column(nullable = false)
     private String title;
-    @NotBlank(message="내용은 필수 항목입니다.")
+
+    @Column(nullable = false)
     private String content;
+    @Column(nullable = false)
     private String views;
-    private Date createdDate;
-    private Date updatedDate;
+    @CreatedDate
+    @Column(updatable = false)
+    private LocalDateTime createdDate;
+    @LastModifiedDate
+    private LocalDateTime updatedDate;
 }
