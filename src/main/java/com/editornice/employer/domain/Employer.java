@@ -13,7 +13,15 @@ import static javax.persistence.FetchType.LAZY;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Employer extends Member {
+public class Employer {
+
+    @Id
+    private Long member_id;
+
+    @MapsId
+    @OneToOne
+    @JoinColumn(name = "member_Id")
+    private Member member;
 
     @ManyToOne(fetch = LAZY)
     @JoinColumn(name = "company_id")

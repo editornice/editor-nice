@@ -2,5 +2,6 @@ package com.editornice.member.domain;
 
 public enum Level {
     ADMIN,
-    USER
+    JOB_SEEKER,
+    EMPLOYER
 }

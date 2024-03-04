@@ -12,8 +12,6 @@ import java.time.LocalDateTime;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-@Inheritance(strategy = InheritanceType.JOINED)
-@DiscriminatorColumn
 public class Member {
 
     @Id
@@ -41,9 +39,7 @@ public class Member {
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private Level level; //enum으로 해야할꺼같음
-
-//    private String dType;
+    private Level level;
 
     @CreatedDate
     @Column(updatable = false)
