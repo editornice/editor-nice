@@ -1,4 +1,4 @@
-package com.editornice.skill.domain;
+package com.editornice.resume.domain;
 
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Entity
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Skill {
+public class Genre {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column(nullable = false)
     private String name;

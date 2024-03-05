@@ -1,7 +1,5 @@
 package com.editornice.resume.domain;
 
-import com.editornice.genre.domain.Genre;
-import com.editornice.skill.domain.Skill;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

@@ -1,4 +1,4 @@
-package com.editornice.jobexperience.domain;
+package com.editornice.resume.domain;
 
 import com.editornice.resume.domain.Resume;
 import lombok.AccessLevel;
