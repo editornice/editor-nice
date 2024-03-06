@@ -16,6 +16,9 @@ public class CompanyService {
 
     public Long save(CompanyCreateRequest createRequest) {
         Company company = createRequest.toEntity();
-        return companyRepository.save(company).getId();
+
+        return companyRepository.findByBusinessNum(company.getBusinessNum())
+                .map(Company::getId)
+                .orElseGet(() -> companyRepository.save(company).getId());
     }
 }
