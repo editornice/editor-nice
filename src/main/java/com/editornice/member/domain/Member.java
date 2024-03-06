@@ -1,13 +1,13 @@
 package com.editornice.member.domain;
 
-import lombok.AccessLevel;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import com.editornice.member.dto.SnsDto;
+import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Map;
 
 @Entity
 @Getter
@@ -18,13 +18,12 @@ public class Member {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, unique = true)
     private String email;
 
     @Column(nullable = false)
     private String nickname;
 
-    @Column(nullable = false)
+
     private String tel;
 
     @Column
@@ -34,10 +33,10 @@ public class Member {
     @Enumerated(EnumType.STRING)
     private SnsType snsType;
 
-    @Column(nullable = false)
+
     private String accessToken;
 
-    @Column(nullable = false)
+
     @Enumerated(EnumType.STRING)
     private Level level;
 
@@ -47,4 +46,16 @@ public class Member {
 
     @LastModifiedDate
     private LocalDateTime updatedDate;
+
+    @Builder
+    private Member(String nickname, SnsType snsType,Level level){
+        this.nickname=nickname;
+        this.snsType=snsType;
+        this.level=level;
+
+    }
+
+
+
 }
+
