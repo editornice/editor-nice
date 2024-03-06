@@ -1,14 +1,15 @@
 package com.editornice.company.domain;
 
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
@@ -32,7 +33,7 @@ public class Company {
     private String address;
 
     @Column(nullable = false)
-    private LocalDateTime openingDate;
+    private LocalDate openingDate;
 
     @CreatedDate
     @Column(updatable = false)
@@ -40,4 +41,24 @@ public class Company {
 
     @LastModifiedDate
     private LocalDateTime updatedDate;
+
+    @Builder
+    public Company(String name, String ceoName, String businessNum, String address, LocalDate openingDate) {
+        this.name = name;
+        this.ceoName = ceoName;
+        this.businessNum = businessNum;
+        this.address = address;
+        this.openingDate = openingDate;
+    }
+
+
+    public Company(Long id, String name, String ceoName, String businessNum, String address, LocalDate openingDate) {
+        this.id = id;
+        this.name = name;
+        this.ceoName = ceoName;
+        this.businessNum = businessNum;
+        this.address = address;
+        this.openingDate = openingDate;
+    }
+
 }
