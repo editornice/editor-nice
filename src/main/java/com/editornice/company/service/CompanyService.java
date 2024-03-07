@@ -15,6 +15,7 @@ public class CompanyService {
     private final CompanyRepository companyRepository;
 
     public Long save(CompanyCreateRequest createRequest) {
+        // TODO : 추후 멤버 연결 작업 추가
         Company company = createRequest.toEntity();
 
         return companyRepository.findByBusinessNum(company.getBusinessNum())
