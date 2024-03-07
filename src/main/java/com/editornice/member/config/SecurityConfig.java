@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/login/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-
+                //.loginPage("/login") <<나중에 로그인페이지 추가되면 설정
                 .oauth2Login()
                 .userInfoEndpoint()
                 .userService(memberService)

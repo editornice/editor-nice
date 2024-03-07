@@ -38,6 +38,7 @@ spring:
               - email
           kakao:
             client-id: 3bca3ea7f2c902b986c3d03a283d0ab9
+            client-secret: R61tHslRvs2Vlyc86qfz3FvEiDoRmDlu
             redirect-uri: "http://localhost:8080/login/oauth2/code/{registrationId}"
             client-authentication-method: POST
             authorization-grant-type: authorization_code

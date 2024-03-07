@@ -1,13 +1,11 @@
 package com.editornice.member.domain;
 
-import com.editornice.member.dto.SnsDto;
 import lombok.*;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Map;
 
 @Entity
 @Getter
