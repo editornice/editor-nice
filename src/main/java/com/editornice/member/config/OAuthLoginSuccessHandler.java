@@ -2,7 +2,7 @@ package com.editornice.member.config;
 
 import com.editornice.member.domain.Member;
 import com.editornice.member.domain.SnsType;
-import com.editornice.member.service.MemberService;
+import com.editornice.member.service.SnsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken;
@@ -20,7 +20,7 @@ import java.util.Map;
 @Component
 @RequiredArgsConstructor
 public class OAuthLoginSuccessHandler extends SimpleUrlAuthenticationSuccessHandler {
-    private final MemberService memberService;
+    private final SnsService memberService;
 
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, FilterChain chain, Authentication authentication) throws IOException, ServletException {

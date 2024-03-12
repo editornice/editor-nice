@@ -2,6 +2,7 @@ package com.editornice.jobseeker.domain;
 
 import com.editornice.member.domain.Member;
 import lombok.AccessLevel;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -26,4 +27,13 @@ public class JobSeeker {
 
     private String ratingCount;
 
+    @Builder
+    public JobSeeker(String dateOfBirth,Member member) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setMember(Member member) {
+        this.member = member;
+        this.member_id=member.getId();
+    }
 }
