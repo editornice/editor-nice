@@ -22,8 +22,11 @@ public class JobSeeker {
 
     private String dateOfBirth;
 
-    private String averageRating;
+    private int ratingCount;
 
-    private String ratingCount;
+    /**
+     * ex) 3.3 / 5
+     */
+    private Double averageRating;
 
 }
