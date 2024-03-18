@@ -3,6 +3,7 @@ package com.editornice.company.dto.request;
 import com.editornice.company.domain.Company;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
@@ -11,6 +12,7 @@ import java.time.LocalDate;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class CompanyCreateRequest {
 
     @NotBlank(message = "회사명을 입력해주세요.")
@@ -26,7 +28,7 @@ public class CompanyCreateRequest {
     private String address;
 
     @NotNull(message = "개업일자를 입력해주세요.")
-    @DateTimeFormat(pattern = "yyyyMMdd")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate openingDate;
 
     public Company toEntity() {
