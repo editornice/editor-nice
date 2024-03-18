@@ -1,6 +1,9 @@
 package com.editornice.member.domain;
 
+import com.editornice.jobseeker.domain.JobSeeker;
 import lombok.*;
+
+import org.hibernate.annotations.Cascade;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -46,6 +49,9 @@ public class Member {
     @LastModifiedDate
     private LocalDateTime updatedDate;
 
+    @OneToOne(mappedBy = "member", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    private JobSeeker jobSeeker;
+
     @Builder
     private Member(String nickname, SnsType snsType,Level level){
         this.nickname=nickname;
@@ -53,6 +59,7 @@ public class Member {
         this.level=level;
 
     }
+
 
 
 

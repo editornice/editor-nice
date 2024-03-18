@@ -14,11 +14,11 @@ import javax.persistence.*;
 public class JobSeeker {
 
     @Id
-    private Long member_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
-    @OneToOne
-    @JoinColumn(name = "member_Id")
     private Member member;
 
     private String dateOfBirth;
@@ -28,12 +28,12 @@ public class JobSeeker {
     private String ratingCount;
 
     @Builder
-    public JobSeeker(String dateOfBirth,Member member) {
+    public JobSeeker(String dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
     public void setMember(Member member) {
         this.member = member;
-        this.member_id=member.getId();
+        this.id=member.getId();
     }
 }

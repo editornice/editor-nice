@@ -13,21 +13,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final OAuthLoginSuccessHandler oAuthLoginSuccessHandler;
     private final OAuthLoginFailureHandler oAuthLoginFailureHandler;
-    private final SnsService memberService;
+    private final SnsService snsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/").permitAll()
+                .antMatchers("/login/**","/members/job-seeker").permitAll()
                 .anyRequest().authenticated()
+                //loginPage("/login")
                 .and()
-                //.loginPage("/login") <<나중에 로그인페이지 추가되면 설정
                 .oauth2Login()
                 .userInfoEndpoint()
-                .userService(memberService)
+                .userService(snsService)
                 .and()
                 .successHandler(oAuthLoginSuccessHandler)
                 .failureHandler(oAuthLoginFailureHandler);
+
     }
 }

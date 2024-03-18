@@ -18,6 +18,7 @@ public class OAuthLoginFailureHandler extends SimpleUrlAuthenticationFailureHand
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
+        System.out.println("실패페이지");
         super.onAuthenticationFailure(request, response, exception);
     }
 }
