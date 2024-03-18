@@ -4,6 +4,7 @@ import com.editornice.member.domain.Member;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -22,6 +23,7 @@ public class JobSeeker {
 
     private String dateOfBirth;
 
+    @ColumnDefault("0")
     private int ratingCount;
 
     /**
