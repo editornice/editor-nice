@@ -1,5 +1,6 @@
 package com.editornice.member.domain;
 
+import com.editornice.employer.domain.Employer;
 import com.editornice.jobseeker.domain.JobSeeker;
 import lombok.*;
 
@@ -51,6 +52,8 @@ public class Member {
 
     @OneToOne(mappedBy = "member", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
     private JobSeeker jobSeeker;
+    @OneToOne(mappedBy = "member", cascade = CascadeType.MERGE, fetch = FetchType.LAZY)
+    private Employer employer;
 
     @Builder
     private Member(String nickname, SnsType snsType,Level level){

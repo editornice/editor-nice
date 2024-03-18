@@ -28,7 +28,7 @@ public class SnsService extends DefaultOAuth2UserService {
 
         if ("kakao".equals(snsType.toLowerCase())){
             sns= SnsType.KAKAO;
-            nickname = "안녕";//((Map<String,Object>) attributes.get("properties")).get("nickname").toString();
+            nickname = ((Map<String,Object>) attributes.get("properties")).get("nickname").toString();
         } else if ("google".equals(snsType.toLowerCase())) {
             sns= SnsType.GOOGLE;
             String email=attributes.get("email").toString();

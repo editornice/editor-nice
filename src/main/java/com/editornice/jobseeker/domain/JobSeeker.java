@@ -15,7 +15,7 @@ public class JobSeeker {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long member_id;
 
     @OneToOne(fetch = FetchType.LAZY)
     @MapsId
@@ -34,6 +34,6 @@ public class JobSeeker {
 
     public void setMember(Member member) {
         this.member = member;
-        this.id=member.getId();
+        this.member_id=member.getId();
     }
 }

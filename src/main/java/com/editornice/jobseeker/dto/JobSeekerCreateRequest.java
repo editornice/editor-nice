@@ -1,4 +1,4 @@
-package com.editornice.member.dto;
+package com.editornice.jobseeker.dto;
 
 import com.editornice.jobseeker.domain.JobSeeker;
 import lombok.AllArgsConstructor;
@@ -13,13 +13,13 @@ import javax.validation.constraints.Pattern;
 @NoArgsConstructor
 @AllArgsConstructor
 public class JobSeekerCreateRequest {
-    //@NotBlank
-   // @Email(message="이메일 주소 양식을 확인해주세요")
+    @NotBlank
+    @Email(message="이메일 주소 양식을 확인해주세요")
     private String email;
-    //@NotBlank(message = "휴대폰번호를 입력해주세요")
-    //@Pattern(regexp = "/^\\d{3}-\\d{3,4}-\\d{4}$/;")
+    @NotBlank(message = "휴대폰번호를 입력해주세요")
+    //@Pattern(regexp = "/^\\d{3}-\\d{3,4}-\\d{4}$/")
     private String tel;
-    //@NotBlank(message = "프로필이미지를 등록해주세요")
+    @NotBlank(message = "프로필이미지를 등록해주세요")
     private String profileImg;
 
     @NotBlank(message = "생년월일을 입력해주세요")
