@@ -5,6 +5,7 @@ import com.editornice.jobseeker.dto.JobSeekerCreateRequest;
 import com.editornice.jobseeker.repository.JobSeekerRepository;
 import com.editornice.member.domain.Member;
 import com.editornice.member.repository.MemberRepository;
+import com.editornice.jobseeker.repository.JobSeekerRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -34,4 +35,13 @@ public class JobSeekerService {
 
 
     }
+    private final JobSeekerRepository jobseekerRepository;
+
+    public JobSeeker findById(Long jobSeekerId){
+        JobSeeker jobSeeker = jobseekerRepository.findById(jobSeekerId)
+                .orElseThrow(() -> new RuntimeException("존재하지 않는 구인자입니다."));
+        return jobSeeker;
+    }
+
+
 }
