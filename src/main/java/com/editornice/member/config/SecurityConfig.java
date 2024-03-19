@@ -1,12 +1,10 @@
 package com.editornice.member.config;
 
-import com.editornice.member.service.MemberService;
+import com.editornice.member.service.SnsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 
 @Configuration
@@ -15,21 +13,22 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
     private final OAuthLoginSuccessHandler oAuthLoginSuccessHandler;
     private final OAuthLoginFailureHandler oAuthLoginFailureHandler;
-    private final MemberService memberService;
+    private final SnsService snsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/login/**").permitAll()
+                .antMatchers("/login/**","/members/**","/image/**").permitAll()
                 .anyRequest().authenticated()
+                //loginPage("/login")
                 .and()
-                //.loginPage("/login") <<나중에 로그인페이지 추가되면 설정
                 .oauth2Login()
                 .userInfoEndpoint()
-                .userService(memberService)
+                .userService(snsService)
                 .and()
                 .successHandler(oAuthLoginSuccessHandler)
                 .failureHandler(oAuthLoginFailureHandler);
+
     }
 }

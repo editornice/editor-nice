@@ -29,7 +29,6 @@ public class EmployerCompanyResponse {
                 .address(company.getAddress())
                 .openingDate(company.getOpeningDate())
                 .content(employer.getContent())
-                .img(employer.getImg())
                 .build();
     }
 }
