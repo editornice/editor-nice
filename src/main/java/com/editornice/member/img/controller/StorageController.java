@@ -1,5 +1,6 @@
 package com.editornice.member.img.controller;
 
+import com.editornice.member.domain.Member;
 import com.editornice.member.img.service.StorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,7 +21,7 @@ public class StorageController {
     // 업로드
     @PostMapping
     public ResponseEntity<?> uploadImage(@RequestParam(value = "image", required=false) MultipartFile file) throws IOException {
-        String uploadImage = storageService.uploadImage(file);
+        String uploadImage = storageService.uploadImage(file,1L);
         return ResponseEntity.status(HttpStatus.OK)
                 .body(uploadImage);
     }

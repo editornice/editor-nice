@@ -20,7 +20,7 @@ public class EmployerCreateRequest {
     private String tel;
     @NotBlank(message = "회사설명을 등록해주세요")
     private String content;
-    private String img;
+    private String image;
 
 
     public Employer toEntity() {

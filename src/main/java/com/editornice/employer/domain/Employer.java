@@ -30,7 +30,6 @@ public class Employer {
 
     private String content;
 
-    private String img;
 
     @Builder
     public Employer(String content) {

@@ -1,4 +1,4 @@
-package com.editornice.jobseeker;
+package com.editornice.jobseeker.controller;
 
 import com.editornice.jobseeker.domain.JobSeeker;
 import com.editornice.jobseeker.dto.JobSeekerCreateRequest;

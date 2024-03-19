@@ -4,6 +4,7 @@ import com.editornice.employer.dto.EmployerCreateRequest;
 import com.editornice.employer.dto.response.EmployerCompanyResponse;
 import com.editornice.employer.service.EmployerService;
 import com.editornice.jobseeker.domain.JobSeeker;
+import com.editornice.member.img.service.StorageService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,6 +21,8 @@ public class EmployerController {
 
     private final EmployerService employerService;
 
+    final private StorageService storageService;
+
     @PostMapping("/mypage/company")
     public ResponseEntity<EmployerCompanyResponse> getCompany() {
         // TODO : 추후 유저 정보 받으면 수정
@@ -27,7 +30,8 @@ public class EmployerController {
         return ResponseEntity.ok().body(employerCompanyResponse);
     }
     @PostMapping("/members/employer")
-    public ResponseEntity<JobSeeker> saveEmployer(HttpServletRequest request, @RequestBody @Valid EmployerCreateRequest employerCreateRequest){
+    public ResponseEntity<JobSeeker> saveEmployer(//HttpServletRequest request,
+                                                  @RequestBody @Valid EmployerCreateRequest employerCreateRequest){
         //HttpSession session = request.getSession();
         //System.out.println(session.getServletContext()+"세션");
         //Member member = (Member)session.getAttribute("member");
